@@ -28,6 +28,7 @@ internal class Program
 
         var expect = 3;
 
+
         var ans = Solution.ClimbStairs(input);
 
         return ans == expect
@@ -39,11 +40,19 @@ internal class Program
 
 public class Solution
 {
+    private static Dictionary<int, int> _cache = new();
+
     public static int ClimbStairs(int n)
     {
         if (n == 1) return 1;
         if (n == 2) return 2;
 
-        return ClimbStairs(n - 1) + ClimbStairs(n - 2);
+        if (_cache.ContainsKey(n)) return _cache[n];
+
+        var res = ClimbStairs(n - 1) + ClimbStairs(n - 2);
+
+        _cache[n] = res;
+
+        return res;
     }
 }
