@@ -4,7 +4,7 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        //Console.WriteLine($"Test1: {Test1()}");
+        Console.WriteLine($"Test1: {Test1()}");
         Console.WriteLine($"Test2: {Test2()}");
     }
 
@@ -64,9 +64,8 @@ public class Solution
                 j++;
             }
 
-            // Set next around i, j
-            i++;
-            j = i + 1;
+            // Set next round i, j
+            (i, j) = SetNextRoundIJ(i);
         }
 
         // No match result
@@ -76,6 +75,11 @@ public class Solution
         static bool CheckSumIsTarget(int[] nums, int target, int i, int j)
         {
             return nums[i] + nums[j] == target;
+        }
+
+        static (int, int) SetNextRoundIJ(int i)
+        {
+            return (i + 1, i + 2);
         }
     }
 }

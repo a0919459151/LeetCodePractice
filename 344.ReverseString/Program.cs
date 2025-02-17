@@ -1,15 +1,13 @@
-﻿
-namespace _344.ReverseString;
+﻿namespace _344.ReverseString;
 
 internal class Program
 {
     static void Main(string[] args)
     {
-
         Console.WriteLine($"Test1: {Test1()}");
     }
 
-    private static object Test1()
+    private static string Test1()
     {
         var arr = "Hello World";
         var expect = "dlroW olleH";
