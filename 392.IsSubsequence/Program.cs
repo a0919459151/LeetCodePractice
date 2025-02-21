@@ -9,7 +9,15 @@ public class Program
         static string Test1()
         {
             string input_s = "abc";
-            string input_s2 = "ahbgdc";
+            string input_t = "ahbgdc";
+
+            var expect = true;
+
+            var ans = Solution.IsSubsequence(input_s, input_t);
+            
+            return ans == expect 
+                ? "success" 
+                : "fail";
         }
     }
     
@@ -17,8 +25,8 @@ public class Program
 
 public class Solution 
 {
-    public static IsSubsequence(string s, string t) 
+    public static bool IsSubsequence(string s, string t)
     {
-        
+        return false;
     }
 }
