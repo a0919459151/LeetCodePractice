@@ -42,6 +42,8 @@ internal class Program
 
 public class Solution
 {
+    private static readonly HashSet<char> _vowels = ['a', 'e', 'i', 'o', 'u'];
+
     public static string ReverseVowels(string s)
     {
         char[] charArray = s.ToCharArray();
@@ -52,12 +54,13 @@ public class Solution
 
         while (true)
         {
-            i = GetLeftVowelCharIndex(charArray, ref i);
-            j = GetRightVowelCharIndex(charArray, ref j);
+            i = GetLeftVowelCharIndex(charArray, i);
+            j = GetRightVowelCharIndex(charArray, j);
 
             if (i >= j) break;
 
             SwapCharArrayValue(charArray, i, j);
+            
             i++;
             j--;
         }
@@ -67,40 +70,28 @@ public class Solution
 
         static void SwapCharArrayValue(char[] charArray, int i, int j)
         {
-            var tempIValue = charArray[i];
-            charArray[i] = charArray[j];
-            charArray[j] = tempIValue;
+            (charArray[i], charArray[j]) = (charArray[j], charArray[i]);
         }
-        static int GetLeftVowelCharIndex(char[] charArray, ref int i)
+        static int GetLeftVowelCharIndex(char[] charArray, int i)
         {
-            if (i > charArray.Length - 1)
+            // Find next vowel
+            while (i < charArray.Length && !IsVowel(charArray[i]))
             {
-                return i;
+                i++;
             }
-            if (IsVowel(charArray[i]))
-            {
-                return i;
-            }
-            i++;
-            return GetLeftVowelCharIndex(charArray, ref i);
+            return i;
         }
-        static int GetRightVowelCharIndex(char[] charArray, ref int j)
+        static int GetRightVowelCharIndex(char[] charArray, int j)
         {
-            if (j < 0)
+            while (j > 0  && !IsVowel(charArray[j]))
             {
-                return j;
+                j--;
             }
-            if (IsVowel(charArray[j]))
-            {
-                return j;
-            }
-            j--;
-            return GetRightVowelCharIndex(charArray, ref j);
+            return j;
         }
         static bool IsVowel(char c)
         {
-            char[] vowels = ['a', 'e', 'i', 'o', 'u'];
-            return vowels.Contains(Char.ToLower(c));
+            return _vowels.Contains(char.ToLower(c));
         }
     }
 }
