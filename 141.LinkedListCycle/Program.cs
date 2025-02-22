@@ -1,6 +1,6 @@
 ﻿namespace _141.LinkedListCycle;
 
-internal class Program
+public class Program
 {
     static void Main(string[] args)
     {
@@ -11,6 +11,8 @@ internal class Program
 
     private static string Test1()
     {
+        Solution solution = new();
+
         // head = [3,2,0,-4], pos = 1
         ListNode node1 = new(3);
         ListNode node2 = new(2);
@@ -24,28 +26,28 @@ internal class Program
 
         var expect = true;
 
-        bool ans = Solution.HasCycle(node1);
+        bool ans = solution.HasCycle(node1);
 
-        return ans == expect 
-            ? "success" 
-            : "fail";
+        return ans == expect ? "success" : "fail";
     }
 
     private static string Test2()
     {
+        Solution solution = new();
+
         // head = [], pos = -1
 
         var expect = false;
 
-        bool ans = Solution.HasCycle(null);
+        bool ans = solution.HasCycle(null);
 
-        return ans == expect
-            ? "success"
-            : "fail";
+        return ans == expect ? "success" : "fail";
     }
 
     private static string Test3()
     {
+        Solution solution = new();
+
         // head = [1,2], pos = -1
         ListNode node1 = new(1);
         ListNode node2 = new(2);
@@ -55,67 +57,8 @@ internal class Program
 
         var expect = false;
 
-        bool ans = Solution.HasCycle(node1);
+        bool ans = solution.HasCycle(node1);
 
-        return ans == expect
-            ? "success"
-            : "fail";
-    }
-}
-
-public class Solution
-{
-    public static bool HasCycle(ListNode? head)
-    {
-        if (head is null) return false;
-
-        // Init hash set
-        HashSet<ListNode> hashSet = new();
-
-        ListNode currentNode = head;
-        ListNode? nextNode = head.next;
-
-        // Loop
-        while(true)
-        {
-            // If next node is null, return answer false 
-            if (nextNode is null)
-            {
-                return false;
-            }
-
-            // If hashSet contains current node, return answer true
-            if (hashSet.Contains(currentNode))
-            {
-                return true;
-            }
-
-            // Add node to set
-            hashSet.Add(currentNode);
-
-            // Move next round
-            (currentNode, nextNode) = MoveNextRound(nextNode);
-        }
-
-        static (ListNode , ListNode?) MoveNextRound(ListNode nextNode)
-        {
-            return (nextNode, nextNode.next);
-        }
-    }
-}
-
-
-/// <summary>
-/// Definition for singly-linked list.
-/// </summary>
-public class ListNode
-{
-    public int val;
-    public ListNode? next;
-
-    public ListNode(int x)
-    {
-        val = x;
-        next = null;
+        return ans == expect ? "success" : "fail";
     }
 }
