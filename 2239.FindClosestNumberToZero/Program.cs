@@ -10,55 +10,27 @@ public class Program
 
     private static string Test1()
     {
+        Solution solution = new();
+
         int[] input = [-4, -2, 1, 4, 8];
 
         var expect = 1;
 
-        var ans = Solution.FindClosestNumber(input);
-        
-        return ans == expect 
-            ? "success" 
-            : "fail";
+        var ans = solution.FindClosestNumber(input);
+
+        return ans == expect ? "success" : "fail";
     }
-    
+
     private static string Test2()
     {
+        Solution solution = new();
+
         int[] input = [2, -1, 1];
 
         var expect = 1;
 
-        var ans = Solution.FindClosestNumber(input);
+        var ans = solution.FindClosestNumber(input);
         
-        return ans == expect 
-            ? "success" 
-            : "fail";
-    }
-}
-
-public class Solution 
-{
-    public static int FindClosestNumber(int[] nums) 
-    {
-        int closest = nums[0];
-    
-        foreach (var num in nums)
-        {
-            if (IsCloser(num, closest) 
-                || IsEqualAndGreater(num, closest))
-            {
-                closest = num;
-            }
-        }
-
-        return closest;
-
-        static bool IsCloser(int num, int closest)
-        {
-            return Math.Abs(num) < Math.Abs(closest);
-        }
-        static bool IsEqualAndGreater(int num, int closest)
-        {
-            return Math.Abs(num) == Math.Abs(closest) && num > closest;
-        }
+        return ans == expect ? "success" : "fail";
     }
 }
