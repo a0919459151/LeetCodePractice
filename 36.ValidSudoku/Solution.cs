@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _36.ValidSudoku
+﻿namespace _36.ValidSudoku
 {
     public class Solution
     {
@@ -57,7 +51,6 @@ namespace _36.ValidSudoku
             }
 
             existingSet.Add(key);
-
             return true;
         }
 
@@ -72,7 +65,6 @@ namespace _36.ValidSudoku
             }
 
             existingSet.Add(key);
-
             return true;
         }
 
@@ -90,7 +82,6 @@ namespace _36.ValidSudoku
             }
 
             existingSet.Add(key);
-
             return true;
         }
     }
